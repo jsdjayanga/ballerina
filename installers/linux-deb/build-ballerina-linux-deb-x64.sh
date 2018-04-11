@@ -62,8 +62,8 @@ fi
 
 
 BALLERINA_DISTRIBUTION_LOCATION=/home/ubuntu/Packs
-BALLERINA_PLATFORM=ballerina-tools-linux-$BALLERINA_VERSION
-BALLERINA_RUNTIME=ballerina-linux-$BALLERINA_VERSION
+BALLERINA_PLATFORM=ballerina-platform-linux-$BALLERINA_VERSION
+BALLERINA_RUNTIME=ballerina-runtime-linux-$BALLERINA_VERSION
 BALLERINA_INSTALL_DIRECTORY=ballerina-$BALLERINA_VERSION
 #BALLERINA_PLATFORM_ZIP=$BALLERINA_DISTRIBUTION_LOCATION/$DISTRIBUTION-$BALLERINA_VERSION.zip
 
@@ -125,8 +125,8 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" $BALLERINA_PLATFORM
     createPackInstallationDirectory
     copyDebianDirectory
-    mv target/$BALLERINA_INSTALL_DIRECTORY target/$BALLERINA_PLATFORM
-    dpkg-deb --build target/$BALLERINA_PLATFORM
+    mv target/$BALLERINA_INSTALL_DIRECTORY target/ballerina-platform-linux-installer-x64-$BALLERINA_VERSION
+    dpkg-deb --build target/ballerina-platform-linux-installer-x64-$BALLERINA_VERSION
 }
 
 function createBallerinaRuntime() {
@@ -135,8 +135,8 @@ function createBallerinaRuntime() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_RUNTIME.zip" $BALLERINA_RUNTIME
     createPackInstallationDirectory
     copyDebianDirectory
-    mv target/$BALLERINA_INSTALL_DIRECTORY target/$BALLERINA_RUNTIME
-    dpkg-deb --build target/$BALLERINA_RUNTIME
+    mv target/$BALLERINA_INSTALL_DIRECTORY target/ballerina-runtime-linux-installer-x64-$BALLERINA_VERSION
+    dpkg-deb --build target/ballerina-runtime-linux-installer-x64-$BALLERINA_VERSION
 }
 
 deleteTargetDirectory
