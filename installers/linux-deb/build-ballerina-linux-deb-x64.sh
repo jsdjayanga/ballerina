@@ -14,7 +14,7 @@ function pringUsage() {
     echo "        build all ballerina distributions"
     echo "        this will OVERRIDE the -d option"
     echo "eg: build.sh -v 1.0.0 -d balletina"
-    echo "eg: build.sh -v 1.0.0 -a"
+    echo "eg: build.sh -v 1.0.0 --all"
 }
 
 BUILD_ALL_DISTRIBUTIONS=false
@@ -64,7 +64,7 @@ fi
 BALLERINA_DISTRIBUTION_LOCATION=/home/ubuntu/Packs
 BALLERINA_PLATFORM=ballerina-tools-linux-$BALLERINA_VERSION
 BALLERINA_RUNTIME=ballerina-linux-$BALLERINA_VERSION
-BALLERINA_INSTALL_DIRECTORY=ballerina-$BALLERINA_VERSION
+BALLERINA_INSTALL_DIRECTORY=ballerina-linux-$BALLERINA_VERSION
 #BALLERINA_PLATFORM_ZIP=$BALLERINA_DISTRIBUTION_LOCATION/$DISTRIBUTION-$BALLERINA_VERSION.zip
 
 #BALLERINA_VERSION=0.970.0-alpha1-SNAPSHOT
@@ -125,7 +125,8 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" $BALLERINA_PLATFORM
     createPackInstallationDirectory
     copyDebianDirectory
-    dpkg-deb --build target/$BALLERINA_INSTALL_DIRECTORY
+    mv target/$BALLERINA_INSTALL_DIRECTORY target/$BALLERINA_PLATFORM
+    dpkg-deb --build target/$BALLERINA_PLATFORM
 }
 
 function createBallerinaRuntime() {
@@ -134,7 +135,8 @@ function createBallerinaRuntime() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_RUNTIME.zip" $BALLERINA_RUNTIME
     createPackInstallationDirectory
     copyDebianDirectory
-    dpkg-deb --build target/$BALLERINA_INSTALL_DIRECTORY
+    mv target/$BALLERINA_INSTALL_DIRECTORY target/$BALLERINA_RUNTIME
+    dpkg-deb --build target/$BALLERINA_RUNTIME
 }
 
 deleteTargetDirectory

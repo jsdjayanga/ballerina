@@ -1,3 +1,0 @@
-sudo rm /usr/bin/ballerina
-sed -i.bak '/BALLERINA_HOME/d' $HOME/.bashrc
-

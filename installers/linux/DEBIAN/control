@@ -1,6 +1,0 @@
-Package: ballerina
-Version: __BALLERINA_VERSION__
-Maintainer: WSO2
-Architecture: all
-Description: Ballerina
-

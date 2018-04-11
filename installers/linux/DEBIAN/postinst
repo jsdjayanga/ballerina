@@ -1,4 +1,0 @@
-ln -s /opt/ballerina/ballerina-linux-__BALLERINA_VERSION__/bin/ballerina /usr/bin/ballerina
-echo "export BALLERINA_HOME=/opt/ballerina/ballerina-linux-__BALLERINA_VERSION__" >> $HOME/.bashrc
-
-
