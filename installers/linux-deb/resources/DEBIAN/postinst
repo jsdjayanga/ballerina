@@ -1,4 +1,7 @@
-ln -s /opt/ballerina/ballerina-linux-__BALLERINA_VERSION__/bin/ballerina /usr/bin/ballerina
-echo "export BALLERINA_HOME=/opt/ballerina/ballerina-linux-__BALLERINA_VERSION__" >> $HOME/.bashrc
+ln -s /opt/ballerina/ballerina-__BALLERINA_VERSION__/bin/ballerina /usr/bin/ballerina
+if [ -f /opt/ballerina/ballerina-__BALLERINA_VERSION__/bin/composer ]; then
+    ln -s /opt/ballerina/ballerina-__BALLERINA_VERSION__/bin/composer /usr/bin/composer
+fi
+echo "export BALLERINA_HOME=/opt/ballerina/ballerina-__BALLERINA_VERSION__" >> $HOME/.bashrc
 
 
